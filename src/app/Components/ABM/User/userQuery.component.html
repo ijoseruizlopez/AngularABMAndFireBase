@@ -1,0 +1,38 @@
+<div class="DivCenter example-container ">
+    <table mat-table [dataSource]="dataSource">
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="Nick" sticky>
+        <th mat-header-cell *matHeaderCellDef> Nick </th>
+        <td mat-cell *matCellDef="let usuario"> {{usuario.Nick}} </td>
+      </ng-container>
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="Region">
+        <th mat-header-cell *matHeaderCellDef>Region</th>
+        <td mat-cell *matCellDef="let usuario"> {{usuario.Region.Description}} </td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="Genero">
+          <th mat-header-cell *matHeaderCellDef> Genero </th>
+          <td mat-cell *matCellDef="let usuario"> {{usuario.Genero.Description}} </td>
+        </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="E-mail">
+        <th mat-header-cell *matHeaderCellDef> E-Mail </th>
+        <td mat-cell *matCellDef="let usuario"> {{usuario.EMail}} </td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="Accion">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let usuario"><app-action-menu [urlRedirect]="'ABM'" [parametros]="[usuario.Id]"></app-action-menu></td>
+        </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+

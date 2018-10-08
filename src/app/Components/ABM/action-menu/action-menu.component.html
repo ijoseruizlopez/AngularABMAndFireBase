@@ -1,0 +1,6 @@
+<button mat-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+<mat-menu #menu="matMenu">
+  <button (click)="redirect('C')" mat-menu-item>Consultar</button>
+  <button (click)="redirect('M')" mat-menu-item>Editar</button>
+  <button (click)="redirect('B')" mat-menu-item>Eliminar</button>
+</mat-menu>

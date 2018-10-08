@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+@import "~bootstrap/dist/css/bootstrap.css";
+
+
+.DivCenter{
+    float: none;
+    margin: 0 auto;
+    width: 80%;
+    padding-top: 2%;
+}

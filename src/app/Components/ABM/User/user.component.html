@@ -1,0 +1,106 @@
+<div class="DivCenter">
+    <form >
+
+        <div class="panel-heading">
+            <strong>ABM USUARIOS</strong>
+        </div>
+
+        <fieldset [disabled]="!editable">
+                <div class="tabs white nomargin-top">
+                        <div class="tab-content">
+                            <div id="Principal" class="tab-pane active">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6 form-group fancy-form2">
+                                                <mat-form-field class="example-full-width">
+                                                    <input [(ngModel)]="user.Nick" name="Nick" matInput placeholder="Nick" >
+                                                </mat-form-field>
+                                            </div>
+            
+                                            <div class="col-md-6 form-group fancy-form2">
+                                                <mat-form-field class="example-full-width">
+                                                    <input matInput [(ngModel)]="user.FechaNacimiento" name="FechaNacimiento" [matDatepicker]="picker" placeholder="Fecha de Nacimiento" >
+                                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                    <mat-datepicker #picker></mat-datepicker>
+                                                </mat-form-field>
+                                            </div>
+            
+                                        </div>
+            
+                                        <div class="row">
+                                            <div class="col-md-6 form-group fancy-form2">
+                                                <mat-form-field class="example-full-width" >
+                                                    <input [(ngModel)]="user.EMail" name="Email" matInput placeholder="E-Mail" >
+                                                </mat-form-field>
+                                            </div>
+            
+                                            <div class="col-md-6 form-group fancy-form2">
+                                                <label>Genero</label><br>
+                                                <mat-radio-group [(ngModel)]="user.Genero.Id" name="Genero" >
+                                                    <mat-radio-button class="example-icon" value="1">Hombre</mat-radio-button>
+                                                    <mat-radio-button class="example-icon" value="2">Mujer</mat-radio-button>
+                                                    <mat-radio-button class="example-icon" value="3">Otro</mat-radio-button>
+                                                </mat-radio-group>
+                                            </div>
+                                        </div>
+            
+            
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-12  form-group fancy-form2">
+                                                <mat-form-field class="example-full-width">
+                                                    <mat-select  placeholder="Selecione su region" [disabled]="!editable" [(ngModel)]="user.Region"  name="region" >
+                                                        <mat-option  *ngFor="let region of regions" [value]="region" >
+                                                            {{region.viewValue}}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-md-6 col-sm-12 form-group fancy-form2">
+                                                <label>Rol</label><br>
+                                                <mat-checkbox [(ngModel)]="user.Roles[0]" name="user.RolTOP"  class="col-md-6 col-sm-12 example-icon">TOP</mat-checkbox>
+                                                <mat-checkbox [(ngModel)]="user.Roles[1]" name="user.RolJUN"  class="col-md-6 col-sm-12 example-icon">JUN</mat-checkbox>
+                                                <mat-checkbox [(ngModel)]="user.Roles[2]" name="user.RolMID"  class="col-md-6 col-sm-12 example-icon">MID</mat-checkbox>
+                                                <mat-checkbox [(ngModel)]="user.Roles[3]" name="user.RolSUP"  class="col-md-6 col-sm-12 example-icon">SUP</mat-checkbox>
+                                                <mat-checkbox [(ngModel)]="user.Roles[4]" name="user.RolADC"  class="col-md-6 col-sm-12 example-icon">ADC</mat-checkbox>
+                                            </div>
+                                        </div>
+                                        <p>
+                                            <i>(*) - Campos requeridos</i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="panel panel-default" *ngIf="editable">
+            
+                        <div class="panel-body">
+                            <div class="row">
+            
+                                <div class="col-sm-6 col-md-6 form-group">
+                                    <button type="button" mat-raised-button color="primary" (click)="Save()">Guardar</button>
+                                </div>
+            
+                                <div class="col-sm-6 col-md-6 form-group">
+                                    <button type="button" mat-raised-button color="warn" (click)="Cancelar()">cancelar</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+            </fieldset>
+    </form>
+
+    <div class="panel panel-default" *ngIf="!editable">
+            
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 form-group">
+                        <button type="button" mat-raised-button color="warn">Regresar</button>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
