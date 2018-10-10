@@ -9,7 +9,7 @@ export class FirestoreService {
     private firestore: AngularFirestore
   ) { }
   //Crea un nuevo user
-  public CreateUser(data: { Id: number, Nick: string; Region: Object; FechaNacimiento: string; EMail: string; Genero: Object; Roles: Object[] }) {
+  public CreateUser(data: { Id: string, Nick: string; Region: Object; FechaNacimiento: string; EMail: string; Genero: Object; Roles: boolean[] }) {
     return this.firestore.collection('User').add(data);
   }
   //Obtiene un user

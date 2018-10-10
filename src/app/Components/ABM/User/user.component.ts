@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FirestoreService } from 'src/app/Services/firestore/firestore.service';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { User } from './Intefaces/User';
@@ -12,7 +12,9 @@ import { User } from './Intefaces/User';
 export class UserComponent implements OnInit {
   action:string;
   editable: boolean = true;
+  user: User;
   id:string;
+  actionComplete:boolean=false;
 
   public userForm =  new FormGroup({
     Id: new FormControl('1'),
@@ -31,7 +33,7 @@ export class UserComponent implements OnInit {
   public regions =[];
   public generos =[];
 
-  constructor(private router: ActivatedRoute, public firestoreService: FirestoreService) {
+  constructor(private router: ActivatedRoute, private route: Router, public firestoreService: FirestoreService) {
 
     this.userForm.setValue({
       Id: '',
@@ -48,7 +50,7 @@ export class UserComponent implements OnInit {
   compareObjects(o1: any, o2: any) {
     if(o1.Description == o2.Description && o1.Id == o2.Id )
     return true;
-    else return false
+    else return false;
   }
 
 
@@ -60,20 +62,36 @@ export class UserComponent implements OnInit {
       this.action=params.Action;}
       );
 
-      if(this.action=="C")
+      if(this.action=="C" || this.action=="B")
+      {
         this.editable=false;
+      }
+       
       if(this.action!="A")
-        this.GetUser(this.id);
-	
-
-         
+        this.GetUser(this.id);     
   }
+
   Save(){
-    console.log(this.userForm.value);
-    console.log(this.userForm.value.FechaNacimiento.toLocaleDateString());
+    if(this.userForm.valid) {
+      this.user = this.userForm.value;
+      this.user.FechaNacimiento = this.userForm.value.FechaNacimiento.toLocaleDateString();
+      
+      if(this.action=="M")
+        this.firestoreService.UpdateUser(this.id, this.user);
+      else
+        this.firestoreService.CreateUser(this.user);
+
+        this.actionComplete=true;
+        this.editable=false;
+      }
   }
 
   Cancel(){
+    this.route.navigate(['/Consulta']);
+  }
+
+  Delete(){
+    
   }
 
   GetUser(documentId){
@@ -83,7 +101,7 @@ export class UserComponent implements OnInit {
       this.userForm.setValue({
         Id : documentId,
         Nick : data.Nick,
-        FechaNacimiento : new Date(parseInt(partsDate[2]), parseInt(partsDate[1]), parseInt(partsDate[0])),
+        FechaNacimiento : new Date(parseInt(partsDate[2]), parseInt(partsDate[1])-1, parseInt(partsDate[0])),
         EMail: data.EMail,
         Genero : data.Genero,
         Roles : data.Roles,

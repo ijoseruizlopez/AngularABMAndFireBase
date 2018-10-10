@@ -4,8 +4,8 @@ export interface User {
     Id:string,
     Nick: string;
     Region: Object;
-    FechaNacimiento:Date;
+    FechaNacimiento:string;
     EMail: string;
     Genero: Object;
-    Roles:Object[]
+    Roles:boolean[]
   }

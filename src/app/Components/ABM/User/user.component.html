@@ -1,107 +1,119 @@
 <div class="DivCenter">
-    <form  [formGroup]="userForm">
+    <form [formGroup]="userForm">
 
         <div class="panel-heading">
             <strong>ABM USUARIOS</strong>
         </div>
 
         <fieldset [disabled]="!editable">
-                <div class="tabs white nomargin-top">
-                        <div class="tab-content">
-                            <div id="Principal" class="tab-pane active">
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        
-                                        <div class="row">
-                                            <div class="col-md-6 form-group fancy-form2">
-                                                <mat-form-field class="example-full-width">
-                                                    <input formControlName="Nick" name="Nick" matInput placeholder="Nick" >
-                                                </mat-form-field>
-                                            </div>
-            
-                                            <div class="col-md-6 form-group fancy-form2">
-                                                <mat-form-field class="example-full-width" >
-                                                    <input matInput name="FechaNacimiento" [matDatepicker]="picker" placeholder="Fecha de Nacimiento" formControlName="FechaNacimiento">
-                                                    <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
-                                                    <mat-datepicker #picker></mat-datepicker>
-                                                </mat-form-field>
-                                            </div>
-            
-                                        </div>
-            
-                                        <div class="row">
-                                            <div class="col-md-6 form-group fancy-form2">
-                                                <mat-form-field class="example-full-width" >
-                                                    <input formControlName="EMail" name="Email" matInput placeholder="E-Mail" >
-                                                </mat-form-field>
-                                            </div>
-                                            <div class="col-md-6 col-sm-12  form-group fancy-form2">
-                                                <mat-form-field class="example-full-width" >
-                                                    <mat-select  placeholder="Selecione su Genero" [disabled]="!editable"  name="Genero" formControlName="Genero" [compareWith]="compareObjects">
-                                                        <mat-option  *ngFor="let genero of generos" [value]="genero">
-                                                            {{genero.Description}}
-                                                        </mat-option>
-                                                    </mat-select>
-                                                </mat-form-field>
-                                            </div>
-                                        </div>
-            
-            
-                                        <div class="row">
-                                            <div class="col-md-6 col-sm-12  form-group fancy-form2">
-                                                <mat-form-field class="example-full-width" >
-                                                    <mat-select  placeholder="Selecione su region" [disabled]="!editable"  name="region" formControlName="Region"  [compareWith]="compareObjects">
-                                                        <mat-option  *ngFor="let region of regions" [value]="region">
-                                                            {{region.Description}}
-                                                        </mat-option>
-                                                    </mat-select>
-                                                </mat-form-field>
-                                            </div>
-                                            <div class="col-md-6 col-sm-12 form-group fancy-form2" formArrayName="Roles">
-                                                <label>Rol</label><br>
-                                                <mat-checkbox formControlName="0" name="RolTOP"  class="col-md-6 col-sm-12 example-icon">TOP</mat-checkbox>
-                                                <mat-checkbox formControlName="1" name="RolJUN"  class="col-md-6 col-sm-12 example-icon">JUN</mat-checkbox>
-                                                <mat-checkbox formControlName="2" name="RolMID"  class="col-md-6 col-sm-12 example-icon">MID</mat-checkbox>
-                                                <mat-checkbox formControlName="3" name="RolSUP"  class="col-md-6 col-sm-12 example-icon">SUP</mat-checkbox>
-                                                <mat-checkbox formControlName="4" name="RolADC"  class="col-md-6 col-sm-12 example-icon">ADC</mat-checkbox>
-                                            </div>
-                                        </div>
-                                        <p>
-                                            <i>(*) - Campos requeridos</i>
-                                        </p>
+            <div class="tabs white nomargin-top">
+                <div class="tab-content">
+                    <div id="Principal" class="tab-pane active">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+                                <div class="row">
+                                    <div class="col-md-6 form-group fancy-form2">
+                                        <mat-form-field class="example-full-width">
+                                            <input formControlName="Nick" name="Nick" matInput placeholder="Nick">
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div class="col-md-6 form-group fancy-form2">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput name="FechaNacimiento" [matDatepicker]="picker" placeholder="Fecha de Nacimiento"
+                                                formControlName="FechaNacimiento">
+                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 form-group fancy-form2">
+                                        <mat-form-field class="example-full-width">
+                                            <input formControlName="EMail" name="Email" matInput placeholder="E-Mail">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12  form-group fancy-form2">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-select placeholder="Selecione su Genero" [disabled]="!editable" name="Genero"
+                                                formControlName="Genero" [compareWith]="compareObjects">
+                                                <mat-option *ngFor="let genero of generos" [value]="genero">
+                                                    {{genero.Description}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
                                     </div>
                                 </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12  form-group fancy-form2">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-select placeholder="Selecione su region" [disabled]="!editable" name="region"
+                                                formControlName="Region" [compareWith]="compareObjects">
+                                                <mat-option *ngFor="let region of regions" [value]="region">
+                                                    {{region.Description}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 form-group fancy-form2" formArrayName="Roles">
+                                        <label>Rol</label><br>
+                                        <mat-checkbox formControlName="0" name="RolTOP" class="col-md-6 col-sm-12 example-icon">TOP</mat-checkbox>
+                                        <mat-checkbox formControlName="1" name="RolJUN" class="col-md-6 col-sm-12 example-icon">JUN</mat-checkbox>
+                                        <mat-checkbox formControlName="2" name="RolMID" class="col-md-6 col-sm-12 example-icon">MID</mat-checkbox>
+                                        <mat-checkbox formControlName="3" name="RolSUP" class="col-md-6 col-sm-12 example-icon">SUP</mat-checkbox>
+                                        <mat-checkbox formControlName="4" name="RolADC" class="col-md-6 col-sm-12 example-icon">ADC</mat-checkbox>
+                                    </div>
+                                </div>
+                                <p>
+                                    <i>(*) - Campos requeridos</i>
+                                </p>
                             </div>
                         </div>
-                    </div>
-            
-                    <div class="panel panel-default" *ngIf="editable">
-            
-                        <div class="panel-body">
-                            <div class="row">
-            
-                                <div class="col-sm-6 col-md-6 form-group">
-                                    <button type="button" mat-raised-button color="primary" (click)="Save()">Guardar</button>
-                                </div>
-            
-                                <div class="col-sm-6 col-md-6 form-group">
-                                    <button type="button" mat-raised-button color="warn" (click)="Cancelar()">cancelar</button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-            </fieldset>
-    </form>
-
-    <div class="panel panel-default" *ngIf="!editable">
-            
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-sm-6 col-md-6 form-group">
-                        <button type="button" mat-raised-button color="warn">Regresar</button>
                     </div>
                 </div>
             </div>
+
+            <div class="panel panel-default" *ngIf="editable">
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6 form-group">
+                            <button type="button" mat-raised-button color="primary" (click)="Save()">Guardar</button>
+                        </div>
+
+                        <div class="col-sm-6 col-md-6 form-group">
+                            <button type="button" mat-raised-button color="warn" (click)="Cancel()">cancelar</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </fieldset>
+    </form>
+
+
+
+    <div class="panel panel-default" *ngIf="actionComplete">
+        <div class="alert alert-success" role="alert">
+            La Accion fue completada
+        </div>
+    </div>
+
+    <div class="panel panel-default" *ngIf="!editable">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6 col-md-6 form-group">
+                    <button type="button" mat-raised-button color="warn" (click)="Delete()" *ngIf="action=='B'">Eliminar</button>
+                </div>
+                <div class="col-sm-6 col-md-6 form-group">
+                    <button type="button" mat-raised-button color="warn" (click)="Cancel()">Regresar</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
