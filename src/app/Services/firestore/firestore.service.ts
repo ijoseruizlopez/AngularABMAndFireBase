@@ -7,21 +7,29 @@ import { Observable } from 'rxjs';
 export class FirestoreService {
   constructor(
     private firestore: AngularFirestore
-  ) {}
+  ) { }
   //Crea un nuevo user
-  public CreateUser(data: {Id:number,Nick: string; Region: Object; FechaNacimiento:string; EMail: string; Genero: Object;Roles:Object[]}) {
-    return this.firestore.collection('users').add(data);
+  public CreateUser(data: { Id: number, Nick: string; Region: Object; FechaNacimiento: string; EMail: string; Genero: Object; Roles: Object[] }) {
+    return this.firestore.collection('User').add(data);
   }
   //Obtiene un user
-  public GetUser(id: number) {
-    return this.firestore.collection('users').doc(id).snapshotChanges();
+  public GetUser(id: string) {
+    return this.firestore.collection('User').doc(id).snapshotChanges();;
   }
   //Obtiene todos los users
   public GetUsers() {
-    return this.firestore.collection('users').snapshotChanges();
+    return this.firestore.collection('User').snapshotChanges();
   }
   //Actualiza un user
-  public UpdateUser(id: number, data: any) {
-    return this.firestore.collection('users').doc(id).set(data);
+  public UpdateUser(id: string, data: any) {
+    return this.firestore.collection('User').doc(id).set(data);
+  }
+
+  public GetRegions() {
+    return this.firestore.collection('Region').snapshotChanges();
+  }
+
+  public GetGeneros() {
+    return this.firestore.collection('Genero').snapshotChanges();
   }
 }

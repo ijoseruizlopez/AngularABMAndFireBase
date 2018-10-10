@@ -15,11 +15,12 @@ import { RouterModule, Route } from '@angular/router';
 import { ActionMenuComponent } from './Components/ABM/action-menu/action-menu.component';
 
 //Importamos el Modulo para hacer el bindeo con formularios
-import { FormsModule} from '@angular/forms'
+import { FormsModule, FormControlDirective, FormGroupDirective, ReactiveFormsModule} from '@angular/forms'
 
 //Fire Base
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 
 const routes: Route[]=[
@@ -42,10 +43,12 @@ const routes: Route[]=[
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes), //Importamos las rutas navegables
     AngularFireModule.initializeApp(environment.firebase)
   ],
-  providers: [],
+  exports : [ReactiveFormsModule],
+  providers: [AngularFirestore, FormControlDirective, FormGroupDirective],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
