@@ -108,7 +108,7 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-sm-6 col-md-6 form-group">
-                    <button type="button" mat-raised-button color="warn" (click)="Delete()" *ngIf="action=='B'">Eliminar</button>
+                    <button type="button" mat-raised-button color="warn" (click)="Delete()" *ngIf="action=='B' && !actionComplete">Eliminar</button>
                 </div>
                 <div class="col-sm-6 col-md-6 form-group">
                     <button type="button" mat-raised-button color="warn" (click)="Cancel()">Regresar</button>

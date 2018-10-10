@@ -77,12 +77,21 @@ export class UserComponent implements OnInit {
       this.user.FechaNacimiento = this.userForm.value.FechaNacimiento.toLocaleDateString();
       
       if(this.action=="M")
-        this.firestoreService.UpdateUser(this.id, this.user);
-      else
-        this.firestoreService.CreateUser(this.user);
+      {
+        this.firestoreService.UpdateUser(this.id, this.user).then(() =>{         
+          this.actionComplete=true;
+          this.editable=false; });
+      }
 
-        this.actionComplete=true;
-        this.editable=false;
+      else{
+        this.firestoreService.CreateUser(this.user).then(() =>{  
+          this.actionComplete=true;
+          this.editable=false;
+          });
+      }
+
+      }else{
+        alert("Campos incompletos o invalidos");
       }
   }
 
@@ -91,7 +100,10 @@ export class UserComponent implements OnInit {
   }
 
   Delete(){
-    
+    this.firestoreService.deleteCat(this.id).then(() => {
+      this.actionComplete=true;
+      this.editable=false;
+    });
   }
 
   GetUser(documentId){

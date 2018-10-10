@@ -25,6 +25,10 @@ export class FirestoreService {
     return this.firestore.collection('User').doc(id).set(data);
   }
 
+  public deleteCat(id: string) {
+    return this.firestore.collection('User').doc(id).delete();
+  }
+
   public GetRegions() {
     return this.firestore.collection('Region').snapshotChanges();
   }
