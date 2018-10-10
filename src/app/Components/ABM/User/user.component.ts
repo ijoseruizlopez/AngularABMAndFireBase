@@ -16,6 +16,7 @@ export class UserComponent implements OnInit {
   id:string;
   actionComplete:boolean=false;
 
+  //Formulario con la estructura del Json que necesitamos
   public userForm =  new FormGroup({
     Id: new FormControl('1'),
     Nick: new FormControl(''),
@@ -33,6 +34,8 @@ export class UserComponent implements OnInit {
   public regions =[];
   public generos =[];
 
+  //router para recuperar los parametros
+  //route para poder navegar
   constructor(private router: ActivatedRoute, private route: Router, public firestoreService: FirestoreService) {
 
     this.userForm.setValue({
@@ -47,6 +50,7 @@ export class UserComponent implements OnInit {
 
   }
 
+  //Metodo auxiliar para  poder setear los combos con objetos
   compareObjects(o1: any, o2: any) {
     if(o1.Description == o2.Description && o1.Id == o2.Id )
     return true;
