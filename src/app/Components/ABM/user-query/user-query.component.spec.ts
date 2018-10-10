@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserQueryComponent } from './userQuery.component';
+import { UserQueryComponent } from './user-query.component';
 
 describe('UserQueryComponent', () => {
   let component: UserQueryComponent;

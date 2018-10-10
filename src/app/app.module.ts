@@ -12,8 +12,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './Components/Common/header/header.component';
 import { FooterComponent } from './Components/Common/footer/footer.component';
 import { MenuComponent } from './Components/Common/menu/menu.component';
-import { UserComponent } from './Components/ABM/user/user.component';
-import { UserQueryComponent } from './Components/ABM/user/userQuery.component';
+
 import { ActionMenuComponent } from './Components/ABM/action-menu/action-menu.component';
 
 //Importamos el Modulo para hacer el bindeo con formularios
@@ -23,6 +22,9 @@ import { FormsModule, FormControlDirective, FormGroupDirective, ReactiveFormsMod
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFirestore } from 'angularfire2/firestore';
+
+import { UserQueryComponent } from './Components/ABM/user-query/user-query.component';
+import { UserComponent } from './Components/ABM/user/user.component';
 
 
 const routes: Route[]=[

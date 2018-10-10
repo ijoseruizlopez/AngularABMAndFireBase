@@ -1,17 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/Components/ABM/User/Intefaces/User';
-
 import { FirestoreService } from 'src/app/Services/firestore/firestore.service';
 
-
 @Component({
-  selector: 'app-userQuery',
-  templateUrl: './userQuery.component.html',
-  styleUrls: ['./userQuery.component.css']
+  selector: 'app-user-query',
+  templateUrl: './user-query.component.html',
+  styleUrls: ['./user-query.component.css']
 })
-
-
 export class UserQueryComponent implements OnInit {
+
   displayedColumns: string[] = ['Nick', 'Region', 'E-mail', 'Genero','Accion'];
   public dataSource =[];
   constructor(private firestoreService: FirestoreService) { 
@@ -37,15 +33,4 @@ export class UserQueryComponent implements OnInit {
     });
     
   }
-
 }
-
-/**
- * 
-          Id: userData.Id,
-          Nick: userData.Nick,
-          FechaNacimiento: userData.FechaNacimiento,
-          EMail: userData.EMail,
-          Genero:userData.Genero,
-          Roles:userData.Roles
- */

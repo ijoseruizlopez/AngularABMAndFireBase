@@ -16,7 +16,8 @@ export class UserComponent implements OnInit {
   id:string;
   actionComplete:boolean=false;
 
-  //Formulario con la estructura del Json que necesitamos
+
+//Formulario con la estructura del Json que necesitamos
   public userForm =  new FormGroup({
     Id: new FormControl('1'),
     Nick: new FormControl(''),
@@ -154,5 +155,4 @@ export class UserComponent implements OnInit {
       })
     });
   }
-
 }
